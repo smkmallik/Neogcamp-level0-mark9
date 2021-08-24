@@ -1,23 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
 :root {
-  --primary-color: cyan;
-  --font-color: black;
+  --primary-color: #b91c1c;
+  --font-color: white;
 }
 
 .App {
-  max-width: 600px;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
   text-align: center;
+  margin: auto;
+}
+
+body {
   margin: 0;
 }
 
 header {
+  display: block;
   background-color: var(--primary-color);
   color: var(--font-color);
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
+  margin: auto;
 }
 
 button {
@@ -30,19 +34,44 @@ button {
   font-size: medium;
 }
 
-footer {
-  background-color: var(--primary-color);
-  position: fixed;
-  margin: auto;
-  width: 100%;
-  bottom: 0;
-  text-align: center;
-  padding: 0.5rem;
-  color: var(--font-color);
-}
-
 .end-credits {
   margin: 1rem;
   font-size: small;
   font-weight: bold;
+}
+
+.footer {
+  background-color: var(--primary-color);
+  margin-top: 7.32rem;
+  padding: 1rem 1rem;
+  color: var(--font-color);
+  bottom: 0;
+  text-align: center;
+}
+
+.footer .footer-header {
+  font-weight: bold;
+  font-size: large;
+}
+
+.footer .link {
+  color: var(--font-color);
+}
+
+.footer ul {
+  padding-inline-start: 0px;
+}
+
+.list-non-bullet {
+  list-style: none;
+}
+
+.list-item-inline {
+  display: inline;
+  padding: 0rem 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
 }

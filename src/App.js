@@ -1,75 +1,137 @@
+import React, { useState } from "react";
 import "./styles.css";
-import { useState } from "react";
+
+var mySongPlaylists = {
+  Relaxing: [
+    {
+      Name: "Overthinking",
+      Artist: "Suriel Hess",
+      Rating: "4/5"
+    },
+    {
+      Name: "Sing Myself to Sleep",
+      Artist: "Suriel Hess",
+      Rating: "5/5"
+    },
+    {
+      Name: "Don't wanna know",
+      Artist: "Suriel Hess",
+      Rating: "4/5"
+    }
+  ],
+  Pop: [
+    {
+      Name: "Memories",
+      Artist: "Maroon-5",
+      Rating: "4/5"
+    },
+    {
+      Name: "Too Good at Goodbyes",
+      Artist: "Sam Smith",
+      Rating: "4/5"
+    },
+    {
+      Name: "Watermelon Sugar",
+      Artist: "Harry Styles",
+      Rating: "5/5"
+    },
+    {
+      Name: "Animals",
+      Artist: "Maroon-5",
+      Rating: "5/5"
+    }
+  ],
+  Rock: [
+    {
+      Name: "Numb",
+      Artist: "Linkin Park",
+      Rating: "5/5"
+    },
+    {
+      Name: "Caste of Glass",
+      Artist: "Linkin Park",
+      Rating: "5/5"
+    },
+    {
+      Name: "Heavy",
+      Artist: "Linkin Park",
+      Rating: "4/5"
+    }
+  ]
+};
+
+var songNames = Object.keys(mySongPlaylists);
 
 export default function App() {
-  var foodDB = {
-    fastFood: [
-      {
-        foodName: "McSpicy Chicken Double Patty",
-        foodRestaurant: "McDonald's"
-      },
-      {
-        foodName: "Indi Tandoori Paneer",
-        foodRestaurant: "Domino's Pizza"
-      }
-    ],
-    northIndian: [
-      {
-        foodName: "Chicken Tikka Biryani",
-        foodRestaurant: "Behrouz Biryani"
-      },
-      {
-        foodName: "Paneer Butter Masala",
-        foodRestaurant: "Urban Punjab"
-      }
-    ]
-  };
+  var [songPlaylist, setSongPlayList] = useState(mySongPlaylists.Relaxing);
 
-  var foods = Object.keys(foodDB);
+  function genreClickHandler(playList) {
+    var songs = mySongPlaylists[playList];
+    setSongPlayList(songs);
+  }
 
-  var [selectedFoodItem, setSelectedFoodItem] = useState("fastFood");
-
-  function foodClickHandler(food) {
-    console.log(food);
-    setSelectedFoodItem(food);
+  function getPlayList(songs) {
+    var name = songs.Name;
+    var artist = songs.Artist;
+    var rating = songs.Rating;
+    var songList = (
+      <section>
+        <div style={{ padding: "0rem 1rem" }}>
+          <h3 style={{ marginBottom: "0.5rem" }}>{name}</h3>
+          <small style={{ fontSize: "0.8rem" }}>{artist}</small>
+          <p>{rating}</p>
+        </div>
+      </section>
+    );
+    return songList;
   }
 
   return (
     <div className="App">
-      <header>Good Foods</header>
-      <hr />
-
-      <div className="foodButtons">
-        <h4> Select your favorite food cuisine: </h4>
-        {foods.map(function (food) {
+      <header>Music Playlist</header>
+      <p>Checkout my favorite songs. Select a genre to get started</p>
+      <div className="option-button">
+        {songNames.map((playList) => {
           return (
-            <button key={food} onClick={() => foodClickHandler(food)}>
-              {food}
+            <button
+              key={playList}
+              className="btn"
+              onClick={() => genreClickHandler(playList)}
+            >
+              {playList}
             </button>
           );
         })}
       </div>
+      <hr />
+      <ul>
+        {songPlaylist.map((songs) => {
+          return getPlayList(songs);
+        })}
+      </ul>
 
-      <div className="foodItems">
-        <ul style={{ listStyle: "none" }}>
-          {foodDB[selectedFoodItem].map((food) => {
-            return (
-              <li key={food}>
-                <div>{food.foodName}</div>
-                <div>
-                  <small>
-                    <em>{food.foodRestaurant}</em>
-                  </small>
-                </div>
-                <br />
-              </li>
-            );
-          })}
+      <footer className="footer">
+        <div className="footer-header">let's connect!</div>
+        <ul className="social-links list-non-bullet">
+          <li className="list-item-inline">
+            <a className="link" href="https://github.com/smkmallik">
+              github
+            </a>
+          </li>
+          <li className="list-item-inline">
+            <a className="link" href="https://twitter.com/soumik_72">
+              twitter
+            </a>
+          </li>
+          <li class="list-item-inline">
+            <a class="link" href="https://www.linkedin.com/in/smkmallik/">
+              linkedin
+            </a>
+          </li>
         </ul>
-      </div>
-
-      <footer>
-        <div className="end-credits">Made with ❤️ Soumik Mallik</div>
+        <div className="end-credits">
+          Made with <span>❤️</span> Soumik Mallik
+        </div>
       </footer>
     </div>
   );
