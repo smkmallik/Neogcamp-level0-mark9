@@ -5,16 +5,19 @@ var mySongPlaylists = {
   Relaxing: [
     {
       Name: "Overthinking",
+      Description: "Song created and sang by Suriel Hess",
       Artist: "Suriel Hess",
       Rating: "4/5"
     },
     {
       Name: "Sing Myself to Sleep",
+      Description: "Song created and sang by Suriel Hess",
       Artist: "Suriel Hess",
       Rating: "5/5"
     },
     {
       Name: "Don't wanna know",
+      Description: "Song created and sang by Suriel Hess",
       Artist: "Suriel Hess",
       Rating: "4/5"
     }
@@ -22,21 +25,25 @@ var mySongPlaylists = {
   Pop: [
     {
       Name: "Memories",
+      Description: "Song created and performed by Maroon-5",
       Artist: "Maroon-5",
       Rating: "4/5"
     },
     {
       Name: "Too Good at Goodbyes",
+      Description: "Song created and sang by Sam Smith",
       Artist: "Sam Smith",
       Rating: "4/5"
     },
     {
       Name: "Watermelon Sugar",
+      Description: "Song created and sang by Harry Styles",
       Artist: "Harry Styles",
       Rating: "5/5"
     },
     {
       Name: "Animals",
+      Description: "Song created and performed by Maroon-5",
       Artist: "Maroon-5",
       Rating: "5/5"
     }
@@ -44,16 +51,19 @@ var mySongPlaylists = {
   Rock: [
     {
       Name: "Numb",
+      Description: "Song created and performed by Linkin Park",
       Artist: "Linkin Park",
       Rating: "5/5"
     },
     {
       Name: "Caste of Glass",
+      Description: "Song created and performed by Linkin Park",
       Artist: "Linkin Park",
       Rating: "5/5"
     },
     {
       Name: "Heavy",
+      Description: "Song created and performed by Linkin Park",
       Artist: "Linkin Park",
       Rating: "4/5"
     }
@@ -72,12 +82,14 @@ export default function App() {
 
   function getPlayList(songs) {
     var name = songs.Name;
+    var description = songs.Description;
     var artist = songs.Artist;
     var rating = songs.Rating;
     var songList = (
       <section>
         <div style={{ padding: "0rem 1rem" }}>
           <h3 style={{ marginBottom: "0.5rem" }}>{name}</h3>
+          <h6>{description}</h6>
           <small style={{ fontSize: "0.8rem" }}>{artist}</small>
           <p>{rating}</p>
         </div>
